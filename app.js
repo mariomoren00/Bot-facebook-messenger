@@ -5,11 +5,15 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const fs = require('fs')
 
+// Declare token facebook
 const APP_TOKEN = 'EAAEi5xta9rUBAMZAoklTSPikydMZBSADVZBvVAkwP5jvhxuQwt0NMbnrGXoragec3xcCrZAMRB5OPR18vht7igKB21PZCSYZCVsk0IM0JTZCvwGAEWjZCNKCIj7D2sZChSZB1uiH3IHmcF2pmMc7g6pGYgYMZASJ34R9cm7HcUuLmp7LAZDZD';
 
 var app = express()
+
+// Declare folder path 
 const folderPath = __dirname + '/app'
 
+// Parse incoming requests
 app.use(bodyParser.json())
 
 // Declare port 
@@ -64,7 +68,22 @@ function getMessage(event){
 
 // Evaluate text message
 function evaluateTextMessage(senderID, messageText){
+	message = "";
+
+	expr = messageText;
+
+	switch (expr) {
+	  case "Help":
+	    break;
+	  case "Information":
+	    break;
+	  case "Profile":
+	    break;
+	  default:
+	  	message = ("I cannot help you :( ");
+	}
 	
+	SendTextMessage(senderID, message);
 }
 
 // Send text message
